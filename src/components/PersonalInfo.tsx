@@ -17,8 +17,8 @@ const PersonalInfo: React.FC = () => {
   return (
     <Container>
       <Title>PERSONAL INFORMATION</Title>
-      <InfoText>Name: Francisco Bachomo Torres</InfoText>
-      <InfoText>Phone: +52 312 139 9996</InfoText>
+      <InfoText>Name: Francisco Javier Ramirez Bachomo</InfoText>
+      <InfoText>Phone: +52 312 243 9309</InfoText>
       <InfoText>Email: franciscobachomo@gmail.com</InfoText>
       <InfoText>Location: Colima, Col.</InfoText>
       <InfoText>Languages: Spanish (Native), English (B1)</InfoText>

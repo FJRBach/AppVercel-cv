@@ -35,7 +35,7 @@ const Period = styled.p`
 
 const Description = styled.p`
   margin-bottom: 8px;
-`;
+`;  
 
 const ExperienceInfo: React.FC = () => {
   const experience: Experience[] = [

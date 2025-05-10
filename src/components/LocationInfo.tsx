@@ -18,7 +18,6 @@ const LocationInfo: React.FC = () => {
     <Container>
       <Title>LOCATION</Title>
       <LocationText>Colima, Colima, México</LocationText>
-      <LocationText>Willing to relocate</LocationText>
     </Container>
   );
 };

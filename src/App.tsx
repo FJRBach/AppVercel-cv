@@ -1,27 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import ImageUploader from './components/ImageUploader';
-import PersonalInfo   from './components/PersonalInfo';
-import LocationInfo   from './components/LocationInfo';
-import AcademicInfo   from './components/AcademicInfo';
+import PersonalInfo from './components/PersonalInfo';
+import AcademicInfo from './components/AcademicInfo';
 import ExperienceInfo from './components/ExperienceInfo';
 
-const Wrapper = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
+// Importa tu imagen estática
+import profilePhoto from './assets/images/profile-photo.png';
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 `;
 
-export default function App() {
+const ProfileImage = styled.img`
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+`;
+
+const ContentContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+`;
+
+const App: React.FC = () => {
   return (
-    <Wrapper>
-      <ImageUploader />
-      <PersonalInfo />
-      <LocationInfo />
-      <AcademicInfo />
-      <ExperienceInfo />
-    </Wrapper>
+    <AppContainer>
+      <ProfileImage src={profilePhoto} alt="Profile" />
+      <ContentContainer>
+        <PersonalInfo />
+        <AcademicInfo />
+        <ExperienceInfo />
+      </ContentContainer>
+    </AppContainer>
   );
-}
+};
+
+export default App;
