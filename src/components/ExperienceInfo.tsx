@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
+import  gsap  from 'gsap';
+import  ScrollTrigger  from 'gsap/ScrollTrigger';
+import AnimatedGradientText from './AnimatedGradientText';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Experience {
   company: string;
@@ -10,10 +15,6 @@ interface Experience {
 
 const Section = styled.div`
   padding: 20px;
-`;
-
-const SectionTitle = styled.h2`
-  margin-bottom: 10px;
 `;
 
 const ExperienceItem = styled.div`
@@ -35,27 +36,47 @@ const Period = styled.p`
 
 const Description = styled.p`
   margin-bottom: 8px;
-`;  
+`;
 
 const ExperienceInfo: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(containerRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const experience: Experience[] = [
     {
       company: 'Freelancer',
       role: 'Freelancer Developer',
       period: '2022 - Present',
-      description: 'Creating systems for business clients using Laravel or Django.',
+      description: 'Creating systems for business clients using principally Kotlin, Laravel y Django.',
     },
     {
-      company: 'IA Interactive',
-      role: 'Web Developer Intern',
-      period: 'Jan - June 2023',
-      description: 'Developed a mobile application in React Native and web management platform in React JS.',
+      company: 'Central Informatica',
+      role: 'Web Developer Internship',
+      period: 'September 2025 - Present',
+      description: 'Developed web apps using Blazor and ASP NET Core, enhancing my skills in C# and .NET technologies.',
     },
   ];
 
   return (
-    <Section>
-      <SectionTitle>EXPERIENCE</SectionTitle>
+    <Section ref={containerRef}>
+      <AnimatedGradientText colors={['#000B69', '#0B7534', '#40ffaa', '#4079ff', '#0B7534']} animationSpeed={3.5} showBorder={true}>EXPERIENCE</AnimatedGradientText>
       {experience.map((item, index) => (
         <ExperienceItem key={index}>
           <Company>{item.company}</Company>
